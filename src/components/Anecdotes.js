@@ -21,6 +21,8 @@ const Anecdote = ({ anecdote, handleClick }) => {
 const Anecdotes = () => {
     const dispatch = useDispatch()
     const anecdotes = useSelector(({ filter, anecdotes }) => {
+        console.log(anecdotes)
+        console.log(filter)
         return anecdotes.filter(anecdote => anecdote.content.toLowerCase().indexOf(filter.toLowerCase()) === 0)
     })
 
