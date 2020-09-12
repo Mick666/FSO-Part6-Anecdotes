@@ -21,13 +21,15 @@ const Anecdote = ({ anecdote, handleClick }) => {
 const Anecdotes = () => {
     const dispatch = useDispatch()
     const anecdotes = useSelector(({ filter, anecdotes }) => {
-        console.log(anecdotes)
-        console.log(filter)
         return anecdotes.filter(anecdote => anecdote.content.toLowerCase().indexOf(filter.toLowerCase()) === 0)
     })
 
     const addNewVote = (anecdote) => {
-        dispatch(addVote(anecdote.id))
+        const updatedAnecdote = {
+            ...anecdote,
+            votes: anecdote.votes + 1
+        }
+        dispatch(addVote(updatedAnecdote))
         const notificationMessage = `You voted for ${anecdote.content}`
         dispatch(setNotification(notificationMessage))
         setTimeout(() => {
