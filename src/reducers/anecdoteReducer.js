@@ -19,9 +19,7 @@ const anecdoteReducer = (state = [], action) => {
 
 export const addVote = (content) => {
     return async dispatch => {
-        console.log(content)
         const updatedAnecdote = await anecdoteService.addLike(content)
-        console.log(updatedAnecdote)
         dispatch({
             type: 'ADD_VOTE',
             data: updatedAnecdote
